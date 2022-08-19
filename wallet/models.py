@@ -35,6 +35,8 @@ class Transaction(models.Model):
     date_and_time = models.DateTimeField(default=timezone.now)
     destination_account = models.IntegerField()
     receipt = models.CharField(max_length=20,null=True)
+    origin = models.CharField(max_length=20,null=True)
+
     
 class Card(models.Model):
     card_number = models.IntegerField()
