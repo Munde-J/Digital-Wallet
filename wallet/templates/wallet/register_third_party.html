@@ -1,0 +1,7 @@
+<h2>Third_party Registration</h2>
+<!-- csrf - cross-end request fordgery -->
+<form method = "POST">{%csrf_token%}
+{{form.as_p}}
+<button type="submit"
+class = "save_button btn-default">save</button>
+</form>

@@ -60,8 +60,8 @@ admin.site.register(Reward,RewardAdmin)
 
 
 class Third_partyAdmin(admin.ModelAdmin):
-    list_display = ('currency','amount',)
-    search_fields = ('currency','amount',)
+    list_display = ('currency','amount','account',)
+    search_fields = ('currency','amount','account',)
 admin.site.register(Third_party,Third_partyAdmin)
 
 class TransactionAdmin(admin.ModelAdmin):
