@@ -7,8 +7,11 @@ from .views import register_notifications
 from .views import register_receipt
 from .views import register_loan
 from .views import register_reward
+from . import views
 urlpatterns = [
     path("register/", register_customer, name = "registration"),
+    path("customers/", views.list_customers, name="customers_list"),
+ 
     path("wallet/",register_wallet, name="registration"),
     path("account/",register_account, name="registration"),
     path("transaction/",register_transaction, name="registration"),
@@ -19,6 +22,11 @@ urlpatterns = [
     path("loan/",register_loan, name="registration"),
     path("reward/",register_reward, name="registration"),
     path("currency/",register_currency, name="registration"),
+    
+
+
+
+    # path("customers/"views.list_customers)
     
 
 

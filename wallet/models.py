@@ -4,13 +4,15 @@ from django.db import models
 
 # Create your models here.
 class Customer(models.Model):
-    profile_picture = models.ImageField(upload_to='profile_picture', null=True,)
+    # profile_picture = models.ImageField(upload_to='profile_picture', null=True,)
     first_name = models.CharField(max_length=20,null=True)
     last_name  = models.CharField(max_length=20,null=True)
     address = models.TextField()
     email = models.CharField(max_length=15,null=True)
     gender = models.CharField(max_length=10,null=True)
     age = models.PositiveSmallIntegerField()
+    def __str__(self):
+        return str(self.form)
 
 class Wallet(models.Model):
     balance = models.IntegerField()
@@ -18,6 +20,8 @@ class Wallet(models.Model):
     amount = models.IntegerField()
     time = models.DateTimeField(default=timezone.now)
     currency = models.ForeignKey('Currency',on_delete=models.CASCADE,related_name='Wallet_currency')
+    def __str__(self):
+        return str(self.form)
 
 class Account(models.Model):
     account_number = models.IntegerField()
@@ -25,6 +29,8 @@ class Account(models.Model):
     account_balance = models.IntegerField()
     account_name = models.CharField(max_length=20,null=True)
     wallet = models.ForeignKey('Wallet',on_delete=models.CASCADE,related_name='Account_wallet')
+    def __str__(self):
+        return str(self.form)
 
 class Transaction(models.Model):
     transaction_ref = models.CharField(max_length=20,null=True)
@@ -36,6 +42,9 @@ class Transaction(models.Model):
     destination_account = models.IntegerField()
     receipt = models.CharField(max_length=20,null=True)
     origin = models.CharField(max_length=20,null=True)
+    def __str__(self):
+        return str(self.form)
+
 
     
 class Card(models.Model):
@@ -48,6 +57,9 @@ class Card(models.Model):
     wallet = models.ForeignKey('Wallet',on_delete=models.CASCADE,related_name='Card_wallet')
     account = models.ForeignKey('Account',on_delete=models.CASCADE,related_name='Card_account')
     issuer = models.CharField(max_length=20,null=True)
+    def __str__(self):
+        return str(self.form)
+
 
 class Third_party(models.Model):
     name = models.CharField(max_length=20,null=True)
@@ -55,6 +67,9 @@ class Third_party(models.Model):
     account = models.ForeignKey('Account',on_delete=models.CASCADE,related_name='Third_party_account')
     location = models.CharField(max_length=20,null=True)
     amount = models.IntegerField()
+    def __str__(self):
+        return str(self.form)
+
 
 class Notifications(models.Model):
     transaction_description = models.CharField(max_length=20,null=True)
@@ -64,12 +79,14 @@ class Notifications(models.Model):
     recipient = models.OneToOneField(Customer,on_delete=models.CASCADE,related_name='Notifications_recipient')
     status = models.CharField(max_length=20,null=True)
     date_and_time = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return str(self.form)
 
 class Reciept(models.Model):
-    CHOICE = (
-        ('withdraw','withdraw'),
-        ('deposit','deposit'),
-    )
+    # CHOICE = (
+    #     ('withdraw','withdraw'),
+    #     ('deposit','deposit'),
+    # )
     reciept_type = models.CharField(max_length=20,null=True,choices=CHOICE)
     date = models.DateField()
     bill_number = models.CharField(max_length=20,null=True)
@@ -77,6 +94,8 @@ class Reciept(models.Model):
     amount = models.IntegerField()
     transaction = models.ForeignKey('Transaction',on_delete=models.CASCADE,related_name='Reciept_transaction')
     receipt_file = models.FileField()
+    def __str__(self):
+        return str(self.form)
 
 class Loan(models.Model):
     loan_number = models.IntegerField()
@@ -89,6 +108,9 @@ class Loan(models.Model):
     payment_due_date = models.DateTimeField(default=timezone.now)
     loan_balance = models.IntegerField()
     guarantor = models.CharField(max_length=20,null=True)
+    def __str__(self):
+        return str(self.form)
+
 
 class Reward(models.Model):
     transaction = models.CharField(max_length=20,null=True)
@@ -97,11 +119,17 @@ class Reward(models.Model):
     gender = models.CharField(max_length=20,null=True)
     third_party = models.ForeignKey('Third_party',on_delete=models.CASCADE,related_name='Reward_third_party')
     date_time = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return str(self.form)
+
 
 class Currency(models.Model):
     origin = models.CharField(max_length=20,null=True) 
     symbol = models.CharField(max_length=20,null=True)
     amount = models.IntegerField()
+    def __str__(self):
+        return str(self.form)
+
 
     
 
