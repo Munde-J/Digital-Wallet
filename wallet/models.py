@@ -87,7 +87,7 @@ class Reciept(models.Model):
     #     ('withdraw','withdraw'),
     #     ('deposit','deposit'),
     # )
-    reciept_type = models.CharField(max_length=20,null=True,choices=CHOICE)
+    # reciept_type = models.CharField(max_length=20,null=True,choices=CHOICE)
     date = models.DateField()
     bill_number = models.CharField(max_length=20,null=True)
     balance = models.IntegerField()

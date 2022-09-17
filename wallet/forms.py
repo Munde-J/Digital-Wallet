@@ -110,10 +110,10 @@ class NotificationsRegistrationForm(ModelForm):
 class ReceiptRegistrationForm(ModelForm):
   class Meta:
         model=Reciept
-        fields=("CHOICE", "receipt_type", "date","bill_number","balance","amount","transaction","receipt_file")
+        fields=("date","bill_number","balance","amount","transaction","receipt_file")
         widgets ={
-          "CHOICE":forms.TextInput(attrs={'class':'form-control'}),
-          "receipt_type":forms.TextInput(attrs={'class':'form-control'}),
+          # "CHOICE":forms.TextInput(attrs={'class':'form-control'}),
+          # "receipt_type":forms.TextInput(attrs={'class':'form-control'}),
           "date":forms.TextInput(attrs={'class':'form-control'}),     
           "bill_number":forms.TextInput(attrs={'class':'form-control'}),    
           "balance":forms.TextInput(attrs={'class':'form-control'}),
@@ -149,7 +149,7 @@ class RewardRegistrationForm(ModelForm):
           "customer_id":forms.TextInput(attrs={'class':'form-control'}),
           "points":forms.TextInput(attrs={'class':'form-control'}),
           "gender":forms.TextInput(attrs={'class':'form-control'}),
-          "third_party":forms.TextInput(attattrs={'class':'form-control'}),
+          "third_party":forms.TextInput(attrs={'class':'form-control'}),
           "date_time":forms.TextInput(attrs={'class':'form-control'}),
         }
 
@@ -159,6 +159,6 @@ class CurrencyRegistrationForm(ModelForm):
         fields=("origin","symbol","amount")
         widgets= {
           "origin":forms.TextInput(attrs={'class':'form-control'}),
-          "symbol":forms.TextInput(attattrs={'class':'form-control'}),
+          "symbol":forms.TextInput(attrs={'class':'form-control'}),
           "amount":forms.TextInput(attrs={'class':'form-control'}),
         }

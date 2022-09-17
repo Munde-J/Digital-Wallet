@@ -49,7 +49,7 @@ class NotificationAdmin(admin.ModelAdmin):
 admin.site.register(Notifications,NotificationAdmin)
 
 class RecieptAdmin(admin.ModelAdmin):
-    list_display = ('reciept_type','date','bill_number',)
+    list_display = ('date','bill_number',)
     search_fields = ('reciept_type','date','bill_number',)
 admin.site.register(Reciept,RecieptAdmin)
 
