@@ -1,4 +1,6 @@
+from bdb import effective
 from locale import currency
+from urllib.request import Request
 from django.shortcuts import render
 from wallet .models import Wallet
 from .forms import CustomerRegistrationForm
@@ -63,7 +65,7 @@ def register_account(request):
         return render(request,"wallet/register_account.html",
         {"form":form})
 
-def list_wallets(request):
+def list_accounts(request):
     accounts = Account.objects.all()
     return accounts(request, "wallet/account_list.html",
     {"accounts": accounts})          
@@ -117,7 +119,7 @@ def register_third_party(request):
         form.save()
     else:
         form = Third_partyRegistrationForm()
-        return render(request,"wallet/register_card.html",
+        return render(request,"wallet/register_third_party.html",
         {"form":form})
 
 def list_third_partys(request):
@@ -135,12 +137,12 @@ def register_notifications(request):
         form.save()
     else:
         form = NotificationsRegistrationForm()
-        return render(request,"wallet/register_notification.html",
+        return render(request,"wallet/register_notifications.html",
         {"form":form})
 
 def list_notifications(request):
     notifications = Notifications.objects.all()
-    return notifications(request, "wallet/notification_list.html",
+    return notifications(request, "wallet/notifications_list.html",
     {"notifications": notifications})    
     # return render(request,"wallet/register_notifications.html",
     # {"form":form}) 
@@ -213,4 +215,22 @@ def list_currencys(request):
     return currency(request, "wallet/currency_list.html",
     {"currency":currency})   
     # return render(request,"wallet/register_currency.html",
-    # {"form":form})                           
+    # {"form":form})   
+
+def customer_profile(request,id):
+    customer = Customer.objects.get(id=id)
+    return render(request,"wallet/customer_profile.html",{"customer":customer})
+
+def edit_customer(request,id):
+    customer = Customer.objects.get(id=id)
+    request.method == "POST"   
+    form = CustomerRegistrationForm(request.POST, instance= Customer) 
+
+    if form.is_valid():
+        form.save()
+        return redirect("Customer_profile,id=customer.id")
+
+    else:
+        form=CustomerRegistrationForm(instance=customer)
+        return render(request,"wallet/edit_customer.html",{form:form})
+
