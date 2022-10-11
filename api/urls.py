@@ -1,10 +1,10 @@
-from django import path, include
-from restframework import resources
-from views import views CustomViewSet
+from django.urls import path, include
+from rest_framework import routers
+from .views import CustomerViewSet
 
-router = route.DeafaulRouter()
-router.register('resources' requested_version)
+router = routers.DefaultRouter()
+router.register(r"routers", CustomerViewSet)
 
 urlpatterns = [
-    path("resources"('resources'))
+    path("",include(router.urls)),
 ]

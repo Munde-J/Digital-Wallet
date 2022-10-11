@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wallet'
-    rest_framework
+    'rest_framework',
 
 ]
 
