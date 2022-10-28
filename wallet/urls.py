@@ -1,25 +1,61 @@
-from django.urls import path
-from .views import account_profile, card_profile, currency_profile, customer_profile, edit_account, edit_card, edit_currency, edit_customer, edit_loan, edit_notification, edit_receipt, edit_reward, edit_third_party, edit_transaction, edit_wallet, loan_profile, notification_profile, receipt_profile, register_account, register_currency, register_customer, register_notifications, register_receipt, register_reward, register_transaction, reward_profile, third_party_profile, transaction_profile, wallet_profile
-from .views import register_wallet
+from django .urls import path
+from wallet.models import Notifications
+from .views import register_account
 from .views import register_card
-from .views import register_third_party
-from .views import register_notifications
-from .views import register_receipt
-from .views import register_loan
-from .views import register_reward
 from . import views
+from .views import register_currency
+from .views import register_customer
+from .views import register_loan
+from .views import register_notifications
+from .views import register_wallet
+from .views import register_receipt
+from .views import register_reward
+from .views import register_third_party
+from .views import edit_third_party
+from .views import register_transaction
+from .views import customer_profile
+from .views import edit_customer
+from .views import wallet_profile
+from .views import edit_wallet
+from .views import edit_currency
+from .views import currency_profile
+from .views import account_profile
+from .views import edit_account
+from .views import edit_reward
+from .views import reward_profile
+from .views import edit_transaction
+from .views import transaction_profile
+from .views import card_profile
+from .views import edit_card
+from .views import edit_notification
+from .views import notification_profile
+from .views import third_party_profile
+from .views import loan_profile
+from .views import edit_loan
+from .views import receipt_profile
+from .views import edit_receipt
+# from django.urls import path
+# from .views import account_profile, card_profile, currency_profile, customer_profile, edit_account, edit_card, edit_currency, edit_customer, edit_loan, edit_notification, edit_receipt, edit_reward, edit_third_party, edit_transaction, edit_wallet, loan_profile, notification_profile, receipt_profile, register_account, register_currency, register_customer, register_notifications, register_receipt, register_reward, register_transaction, reward_profile, third_party_profile, transaction_profile, wallet_profile
+# from .views import register_wallet
+# from .views import register_card
+# from .views import register_third_party
+# from .views import register_notifications
+# from .views import register_receipt
+# from .views import register_loan
+# from .views import register_reward
+# from . import views
 
-from .views import list_accounts
-from .views import list_cards
-from .views import list_currencys
-from .views import list_customers
-from .views import list_loan
-from .views import list_notifications
-from .views import list_receipts
-from .views import list_rewards
-from .views import list_third_partys
-from .views import list_wallets
-from .views import list_transactions
+# from .views import list_accounts
+# from .views import list_cards
+# from .views import list_currencys
+# from .views import list_customers
+# from .views import list_loan
+# from .views import list_notifications
+# from .views import list_receipts
+# from .views import list_rewards
+# from .views import list_third_partys
+# from .views import list_wallets
+# from .views import list_transactions
 
 
 urlpatterns = [
